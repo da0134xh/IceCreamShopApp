@@ -90,7 +90,7 @@ def print_reciept(num_scoops, chosen_flavors, chosen_toppings):
     """Prints a nice receipt for the customer"""
     print("\n== Your Ice Cream Order ===")
     for i in range(num_scoops):
-        print(f"Scoop {i+1}: {chosen_flavors[i].title}") #.title first letter will be capitalize
+        print(f"Scoop {i+1}: {chosen_flavors[i].title()}") #.title first letter will be capitalize
 
     if chosen_toppings:
         print("\nToppings:")
