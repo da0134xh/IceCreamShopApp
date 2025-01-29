@@ -80,7 +80,33 @@ def get_toppings():
     # Return the list of toppings that the user chose
     return chosen_toppings
 
-    # Main function - updated test function
+def calculate_total(num_scoops, num_toppings):
+    """Calculates the total cost of the order"""
+    scoop_cost = num_scoops * prices["scoop"]
+    topping_cost = num_toppings * prices["topping"]
+    return scoop_cost + topping_cost
+
+def print_reciept(num_scoops, chosen_flavors, chosen_toppings):
+    """Prints a nice receipt for the customer"""
+    print("\n== Your Ice Cream Order ===")
+    for i in range(num_scoops):
+        print(f"Scoop {i+1}: {chosen_flavors[i].title}") #.title first letter will be capitalize
+
+    if chosen_toppings:
+        print("\nToppings:")
+        # Loop through the list of toppings
+        for topping in chosen_toppings:
+            print(f" - {topping.title()}")
+    
+    # Print the total
+    total = calculate_total(num_scoops, len(chosen_toppings))
+    print(f"\nTotal: ${total:.2f}")
+
+    # Save order to file
+    with open("daily_orders.txt", "a") as file:
+        file.write(f"\nOrder: {num_scoops} scoops - ${total:.2f}")
+
+# Main function - updated test function
 def main():
     display_menu()
     # Call get flavors function, which returns the number of scoops
@@ -88,10 +114,8 @@ def main():
     num_scoops, chosen_flavors = get_flavors()
     # Call the get toppings functions which returns the list of toppings
     chosen_toppings = get_toppings()
-    # Display an order summary
-    print("\nOrder Summary:")
-    print(f"Scoops: {chosen_flavors}")
-    print(f"Toppings: {chosen_toppings}")
+    # Display the reciepts
+    print_reciept(num_scoops, chosen_flavors, chosen_toppings)
 
     # Automatically execute the main function when the application runs
 if __name__ == "__main__":
