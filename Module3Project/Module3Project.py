@@ -1,6 +1,6 @@
 # Ice Cream Shop Application
 # Author: Carlos Dominguez
-# Date: 01/29/2025
+# Updated: 02/04/2025
 
 # Store our ice screem shop's menu items
 cones = ["cake", "sugar", "waffle"] # type of cone
